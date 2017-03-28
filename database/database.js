@@ -2,7 +2,7 @@
 
 const databaseName = 'tsphere'
 const connectionString = process.env.DATABASE_URL || `postgres://${process.env.USER}@localhost:5432/${databaseName}`
-const pgp = require('pg-promise')
+const pgp = require('pg-promise')()
 const database = pgp(connectionString)
 
 const getAllTweets = () => {
