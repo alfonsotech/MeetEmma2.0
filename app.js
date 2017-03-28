@@ -2,11 +2,12 @@
 
 const express = require('express')
 const app = express()
+// const router = require('./routes.js')
 const database = require('./database/database.js')
 // const model = require('./javascript/model.js')
 
 app.get('/', (request, response) => {
-  response.send('Hello Twittersphere!')
+  response.send('Hello Twitterland!')
 })
 
 app.get('/getAllTweets', (request, response) => {
@@ -15,6 +16,6 @@ app.get('/getAllTweets', (request, response) => {
 })
 
 app.listen(4000)
-console.log('Listening on Port 6000')
+console.log('Listening on Port 4000')
 
 module.exports = app
