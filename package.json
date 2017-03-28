@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src -d lib",
+    "start": "nodemon app.js",
+    "test": "eslint"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,9 @@
   },
   "homepage": "https://github.com/alfonsotech/tweet-rt#readme",
   "dependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-preset-env": "^1.2.2",
+    "babel-register": "^6.24.0",
     "eslint": "^3.18.0",
     "express": "^4.15.2",
     "pg-promise": "^5.6.4",
