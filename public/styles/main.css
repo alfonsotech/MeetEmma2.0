@@ -1,0 +1,30 @@
+body div {
+  outline: 1px dotted red;
+  padding: 5px;
+}
+h1 {
+  font-size: 2em;
+  text-align: center;
+}
+h2 {
+  font-size: 1.5em;
+}
+button {
+  margin-right: 5px;
+}
+.title {
+  padding: 1em;
+}
+.main {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.tweet {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: baseline;
+  align-content: stretch;
+}

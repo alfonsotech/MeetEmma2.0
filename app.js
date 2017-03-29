@@ -2,9 +2,12 @@
 
 const express = require('express')
 const app = express()
-// const router = require('./routes.js')
+const pug = require('pug');
+const path = require('path')
 const database = require('./database/database.js')
-// const model = require('./javascript/model.js')
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('view engine', 'pug')
 
 app.get('/', (request, response) => {
   return database.getAllTweets()
