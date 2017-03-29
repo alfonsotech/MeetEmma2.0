@@ -5,6 +5,7 @@ const app = express()
 const pug = require('pug');
 const path = require('path')
 const database = require('./database/database.js')
+require('./javascript/model.js')
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'pug')

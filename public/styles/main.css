@@ -1,6 +1,10 @@
 body div {
-  outline: 1px dotted red;
+  /*outline: 1px dotted red;*/
   padding: 5px;
+}
+#logo {
+  text-align: center;
+  color: red;
 }
 h1 {
   font-size: 2em;
@@ -15,16 +19,25 @@ button {
 .title {
   padding: 1em;
 }
-.main {
+/*.main {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: space-between;
   align-items: stretch;
-}
+}*/
 .tweet {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   justify-content: flex-start;
   align-items: baseline;
   align-content: stretch;
+  outline: 1px dotted red;
+}
+.content:hover {
+  color: red;
+  font-size: 105%;
+}
+.category:hover {
+  color: red;
+  font-size: 105%;
 }
