@@ -15,6 +15,20 @@ app.get('/', (request, response) => {
   .then(tweets => response.render('index.pug', {tweets}))
 })
 
+app.get('/editTweetContent', (request, response) => {
+  response.render('editTweetContent.pug')
+  // return database.getTweetByContent()
+  // .then(tweets =>
+  // response.render('editTweetContent.pug', {content}))
+})
+
+app.get('/editTweetCategory', (request, response) => {
+  response.render('editTweetCategory.pug')
+  // return database.getTweetByContent()
+  // .then(tweets =>
+  // response.render('editTweetContent.pug', {content}))
+})
+
 app.listen(4000)
 console.log('Listening on Port 4000')
 

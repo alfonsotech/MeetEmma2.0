@@ -1,0 +1,7 @@
+form {
+  outline: 1px dotted red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em;
+}
