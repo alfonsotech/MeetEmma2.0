@@ -10,21 +10,21 @@ html(lang='en')
     .title
       p#logo thinkPhilosophy's
       h1 MeetEmma 2.0!
-    .cue
-      h2 Upcoming Tweets
+    //- .cue
+    //-   h2 Upcoming Tweets
     .dashboard
       h2 Dashboard
       .main
         ul
           each tweet in tweets
             .tweet
-              .content
+              #content
                li= tweet.content
-              .category
+              #category
                 li= tweet.category
               .buttons
                 button(type='button') Tweet
                 button(type='button') Edit content
                 button(type='button') Edit Category
                 button(type='button') Delete
-      
+    script(src='views.js')  

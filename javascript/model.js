@@ -31,6 +31,7 @@ const params = {
 T.get('search/tweets', params, getTweets)
 
 function getTweets(err, data, response) {
+	database.deleteDuplicates()
 	var tweets = data.statuses
 	console.log(tweets);
 	for(var i = 0; i < tweets.length; i++) {
@@ -48,7 +49,7 @@ function tweetOut() {
 	database.getAllTweets()
 	.then(data => {
 		for(var i = 0; i < data.length; i++) {
-			allTweets.push(data[i].tweetx)
+			allTweets.push(data[i].content)
 		}
 		let arrayLength = allTweets.length
 		let index = Math.floor((Math.random() * arrayLength) + 1);
