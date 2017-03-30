@@ -19,7 +19,12 @@ button {
 .title {
   padding: 1em;
 }
-
+/*.main {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+}*/
 .tweet {
   display: flex;
   flex-flow: column wrap;
@@ -28,11 +33,11 @@ button {
   align-content: stretch;
   outline: 1px dotted red;
 }
-#content:hover {
+.tweet-content:hover {
   color: red;
   font-size: 105%;
 }
-#category:hover {
+.tweet-category:hover {
   color: red;
   font-size: 105%;
 }

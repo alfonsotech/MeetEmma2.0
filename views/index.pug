@@ -15,16 +15,14 @@ html(lang='en')
     .dashboard
       h2 Dashboard
       .main
-        ul
+        ul.tweets
           each tweet in tweets
             .tweet
-              #content
+              .tweet-content
                li= tweet.content
-              #category
+              .tweet-category
                 li= tweet.category
               .buttons
                 button(type='button') Tweet
-                button(type='button') Edit content
-                button(type='button') Edit Category
                 button(type='button') Delete
     script(src='views.js')  

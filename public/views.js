@@ -1,44 +1,20 @@
-const tweetText = document.getElementById('content')
-tweetText.onclick = editTweetContent
+const tweets = document.querySelectorAll('.tweets > .tweet > .tweet-content')
 
-function editTweetContent() {
-    const content = event.target.innerHTML
-    console.log(content)
-    console.log(this);
+for(var i = 0; i < tweets.length; i++) {
+  tweets[i].addEventListener('click', editTweetContent)
 }
 
-const $ = function(selector) {
-  return document.querySelector(selector)
+function editTweetContent(event) {
+  const content = event.target.text
+  console.log(content)
+  console.log(this);
+  event.target.text='tweet text changed!'
 }
 
+//event handler that gets ahold of a tweet's id when the content is clicked on
 
-const content = $('#content').getElementsByTagName('li')
-for(var i = 0; i < content.length; i++) {
-  const thisContent = content[i]
-  content.onclick = editTweetContent
-}
-// document.getElementById('content').addEventListener('click', editTweetContent)
-//
-// function editTweetContent() {
-//   //event handler that gets ahold of a tweet's id when the content is clicked on
-//   const content = event.target.innerHTML
-//   console.log(content)
-//   console.log(this);
-// }
-//
-// const editTweetContent = () => {
-//   //event handler that gets ahold of a tweet's id when the content is clicked on
-//   document.getElementById("content").addEventListener('click', function() {
-//     console.log('in the event listener: ', event.target.innerHTML);
-//
-//   })
-// }
 //uses the tweet id to retrieve that tweet's content
 
 //writes the tweet content to the value of the form on the page
 
 //user can edit tweet and when enter submits info, tweet is updated in the database
-
-// module.exports = {
-//   editTweetContent
-// }
