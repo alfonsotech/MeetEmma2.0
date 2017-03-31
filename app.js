@@ -29,6 +29,12 @@ app.get('/editTweetCategory', (request, response) => {
   // response.render('editTweetContent.pug', {content}))
 })
 
+app.post('/updateContent/:id', (request, response, next) => {
+
+})
+
+//app.delete()
+
 app.listen(4000)
 console.log('Listening on Port 4000')
 

@@ -17,6 +17,14 @@ const getTweetByContent = (content) => {
   return database.one(`SELECT * FROM tweets WHERE content LIKE $1`, ['%' + content + '%'])
 }
 
+const updateTweetContent = (contentold, contentnew) => {
+  return database.one(`UPDATE tweets SET content = $1 WHERE content = $2`, [contentnew, contentold])
+}
+
+const updateTweetCategory = (categoryold, categorynew) => {
+  return database.one(`UPDATE tweets SET category = $1 WHERE category = $2`, [categorynew, categoryold])
+}
+
 const addTweet = (category, content) => {
   database.any(`INSERT INTO  tweets (category, content) VALUES ($1, $2)`, [category, content])
 }
@@ -32,6 +40,8 @@ module.exports = {
   getAllTweets,
   // getTweetById,
   getTweetByContent,
+  updateTweetContent,
+  updateTweetCategory,
   addTweet,
   deleteDuplicates
 }

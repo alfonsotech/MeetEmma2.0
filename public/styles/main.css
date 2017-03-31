@@ -4,7 +4,7 @@ body div {
 }
 #logo {
   text-align: center;
-  color: red;
+  color: blue;
 }
 h1 {
   font-size: 2em;
@@ -34,10 +34,10 @@ button {
   outline: 1px dotted red;
 }
 .tweet-content:hover {
-  color: red;
+  color: blue;
   font-size: 105%;
 }
 .tweet-category:hover {
-  color: red;
+  color: blue;
   font-size: 105%;
 }

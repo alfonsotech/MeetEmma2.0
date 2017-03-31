@@ -19,9 +19,9 @@ html(lang='en')
           each tweet in tweets
             .tweet
               .tweet-content
-               li= tweet.content
+               li(contenteditable='true')= tweet.content
               .tweet-category
-                li= tweet.category
+                li(contenteditable='true')= tweet.category
               .buttons
                 button(type='button') Tweet
                 button(type='button') Delete
