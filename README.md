@@ -33,7 +33,7 @@ Developers/Learners will get practice working with Twitter's REST APIs on the ba
 
 ### Required
 
-- [ ] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
+- [x] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
 
 ## Quality Rubric
 
