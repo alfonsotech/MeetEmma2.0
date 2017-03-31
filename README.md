@@ -25,7 +25,7 @@ Developers/Learners will get practice working with Twitter's REST APIs on the ba
 ## Stretch Goals
 
 - [x] Retrieve past tweets from Twitter feed either in batches (say, the last ten tweets) or automatically as they are being tweeted out.
-- [ ] Edit tweets in, or delete tweets from, database in the UI.
+- [1/4] Edit tweets in, or delete tweets from, database in the UI.
 - [ ] Store another user's tweets in database by accessing and capturing their Twitter feed.
 - [x] Re-Tweet posts in database randomly, manually, or automatically on a set timer (i.e., once an hour).
 - [1/2] Ability to organize database of past tweets according to categories (use of filters).
