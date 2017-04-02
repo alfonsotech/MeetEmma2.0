@@ -4,6 +4,7 @@ const express = require('express')
 const app = express()
 const pug = require('pug');
 const path = require('path')
+var bodyParser     =        require('body-parser');
 const database = require('./database/database.js')
 require('./javascript/model.js')
 

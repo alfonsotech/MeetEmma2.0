@@ -30,8 +30,12 @@ const addTweet = (category, content) => {
 }
 
 const deleteDuplicates = () => {
-  database.any(`DELETE FROM tweets WHERE ctid NOT IN
-(SELECT max(ctid) FROM tweets GROUP BY tweets.*)`)
+  database.any(`DELETE FROM tweets
+WHERE id IN (SELECT id
+              FROM (SELECT id,
+                             ROW_NUMBER() OVER (partition BY content, category ORDER BY id) AS rnum
+                     FROM tweets) t
+              WHERE t.rnum > 1);`)
 }
 
 //TODO: function to select a tweet by id or content and alter its category

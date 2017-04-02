@@ -42,7 +42,7 @@ function getTweets(err, data, response) {
 }
 
 //	TWEET OUT ONE RANDOM TWEET FROM DB
-setInterval (tweetOut, 1000*60*60)
+setInterval (tweetOut, 1000*60*20)
 
 function tweetOut() {
 	const allTweets = [];
