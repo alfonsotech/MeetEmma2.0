@@ -1,0 +1,28 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title MeetEmma 2.0
+    link(rel='stylesheet', href='./styles/meyers-reset.css')
+    link(rel='stylesheet', href='./styles/main.css')
+  body
+    .title
+      p#logo thinkPhilosophy's
+      h1 MeetEmma 2.0!
+    //- .cue
+    //-   h2 Upcoming Tweets
+    .dashboard
+      h2 Dashboard
+      .main
+        ul.tweets
+          each tweet in tweets
+            .tweet
+              .tweet-content
+               li(contenteditable='true')= tweet.content
+              .tweet-category
+                li(contenteditable='true')= tweet.category
+              .buttons
+                button(type='button') Tweet
+                button(type='button') Delete
+    script(src='views.js')  
