@@ -1,32 +1,23 @@
-doctype html
-html(lang='en')
-  head
-    meta(charset='UTF-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    title MeetEmma 2.0
-    link(rel='stylesheet', href='./styles/meyers-reset.css')
-    link(rel='stylesheet', href='./styles/main.css')
+extends layout.pug
+block content
   body
     .title
       p#logo thinkPhilosophy's
       h1 MeetEmma 2.0!
-    .cue
-      h2 Upcoming Tweets
     .dashboard
       h2 Dashboard
       .main
-        ul
-          each tweet in tweets
-            .tweet
-              .content
-               li= tweet.content
-              .category
-                li= tweet.category
-              .buttons
-                button(type='button') Tweet
-                button(type='button') Edit content
-                button(type='button') Edit Category
-                button(type='button') Delete
-        .stats
-          h2 Stats
+        each tweet in tweets
+          ul.tweet
+            input#tweet-id(type='hidden', value=tweet.id)
+            li.tweet-content(type='text' method='post' value=`${tweet.content}`)= tweet.content
+            li.tweet-category(type='text' method='post' value=`${tweet.category}`)= tweet.category
+            .buttons
+              form(action=`/tweetOut/${tweet.id}`, method='post')
+                button(type='submit') Tweet
+              form(action=`/editTweet/${tweet.id}`, method='get')
+                button(type='submit') Edit
+              form(action=`/deleteTweet/${tweet.id}`, method='post')
+                button(type='submit') Delete
       
+    

@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS tweets;
 CREATE TABLE tweets
   (
-    tweetid SERIAL PRIMARY KEY,
-    category VARCHAR(150),
-    content VARCHAR(1718)
+    id SERIAL PRIMARY KEY,
+    content VARCHAR(1718),
+    category VARCHAR(150)
   );

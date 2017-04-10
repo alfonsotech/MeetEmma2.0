@@ -8,30 +8,54 @@ const database = pgp(connectionString)
 const getAllTweets = () => {
   return database.any(`SELECT * FROM tweets ORDER BY content`)
 }
-//
-// const getTweetById = (id) => {
-//   return database.one(`SELECT * FROM tweets WHERE id=$1`, [$1=id])
-// }
-//
-// const getTweetByContent = (content) => {
-//   return database.one(`SELECT * FROM tweets WHERE content=$1`, [$1='%' + conent = '%']) //how to build this query
-// }
-//
-// const addTweet = (content, category) => {
-//   database.any(`INSERT INTO  tweets (content, category) VALUES ($1, $2)`, [$1=content, $2=category])
-// }
-//
-// const deleteDuplicates = () => {
-//   database.any(`DELETE FROM tweets WHERE ctid NOT IN
-// (SELECT max(ctid) FROM tweets GROUP BY tweets.*)`)
-// }
+
+const getTweetById = (id) => {
+  return database.one(`SELECT * FROM tweets WHERE tweets.id = ${id}`)
+}
+
+const getByContent = (content) => {
+  return database.one(`SELECT * FROM tweets WHERE content LIKE $1`, ['%' + content + '%'])
+}
+
+const updateContent = (id, content) => {
+  return database.one(`UPDATE tweets SET content = ${content} WHERE id = ${id}`)
+}
+
+const updateCategory = (id, category) => {
+  return database.one(`UPDATE tweets SET content = ${category} WHERE id = ${id}`)
+}
+
+const addTweet = (category, content) => {
+  database.any(`INSERT INTO  tweets (category, content) VALUES ($1, $2)`, [category, content])
+}
+
+const tweetOut = () => {
+
+}
+
+const deleteTweet = (id) => {
+  database.one(`DELETE FROM tweets
+WHERE id = ${id}`)
+}
+
+const deleteDuplicates = () => {
+  database.any(`DELETE FROM tweets
+WHERE id IN (SELECT id
+              FROM (SELECT id,
+                             ROW_NUMBER() OVER (partition BY content, category ORDER BY id) AS rnum
+                     FROM tweets) t
+              WHERE t.rnum > 1);`)
+}
 
 //TODO: function to select a tweet by id or content and alter its category
 
 module.exports = {
-  getAllTweets
-  // getTweetById,
-  // getTweetByContent,
-  // addTweet,
-  // deleteDuplicates
+  getAllTweets,
+  getTweetById,
+  getByContent,
+  updateContent,
+  updateCategory,
+  addTweet,
+  deleteTweet,
+  deleteDuplicates
 }
