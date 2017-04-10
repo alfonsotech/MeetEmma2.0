@@ -1,0 +1,21 @@
+extends layout.pug
+
+block content
+  body
+    .title
+      p#logo thinkPhilosophy's
+      h1 MeetEmma 2.0!
+    .dashboard
+      h2 Edit Tweet
+      .main
+          ul.tweet
+            form(action=`/updateTweet/${tweet.id}`, method='post')
+              input#tweet-id(type='hidden', value=tweet.id)
+              li
+                input.tweet-content(type='text' name='content' value=tweet.content)
+              li
+                input.tweet-category(type='text' value=`${tweet.category}`)
+              .buttons
+                button(type='submit' method='post' value='submit') Submit
+      
+    
