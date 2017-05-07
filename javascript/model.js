@@ -59,7 +59,7 @@ function tweetOut() {
 
 		T.post('statuses/update', tweet, tweeted)
 
-		function tweeted(err, data, respoonse) {
+		function tweeted(err, data, response) {
 			if(err) {
 				console.log('Something went wrong!', err)
 			} else {
@@ -70,12 +70,13 @@ function tweetOut() {
 }
 
 const manualTweet = (content) => {
-
-	let tweet = content
-
+	let tweet = {
+		status: content
+	}
+	// let tweet = content
 	T.post('statuses/update', tweet, tweeted)
 
-	function tweeted(err, data, respoonse) {
+	function tweeted(err, data, response) {
 		if(err) {
 			console.log('Something went wrong!', err)
 		} else {
@@ -100,8 +101,5 @@ function addToDb(event) {
 function editContent(content, getTweetByContent) {
 	// getTweetByContent(content)
 }
-
-const test = editContent('I do love her work because my first love')
-console.log(test);
 
 module.exports = {manualTweet}
