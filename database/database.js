@@ -18,7 +18,7 @@ const getByContent = (content) => {
 }
 
 const updateContent = (id, content) => {
-  database.any(`UPDATE tweets SET content = '${content}' WHERE id = ${id}`)
+  database.any(`UPDATE tweets SET content = E'${content}' WHERE id = ${id}`)
 }
 
 const updateCategory = (id, category) => {
