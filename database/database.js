@@ -14,27 +14,23 @@ const getTweetById = (id) => {
 }
 
 const getByContent = (content) => {
-  return database.one(`SELECT * FROM tweets WHERE content LIKE $1`, ['%' + content + '%'])
+  return database.any(`SELECT * FROM tweets WHERE content LIKE $1`, ['%' + content + '%'])
 }
 
 const updateContent = (id, content) => {
-  return database.one(`UPDATE tweets SET content = ${content} WHERE id = ${id}`)
+  database.any(`UPDATE tweets SET content = '${content}' WHERE id = ${id}`)
 }
 
 const updateCategory = (id, category) => {
-  return database.one(`UPDATE tweets SET content = ${category} WHERE id = ${id}`)
+  database.any(`UPDATE tweets SET category = '${category}' WHERE id = ${id}`)
 }
 
 const addTweet = (category, content) => {
   database.any(`INSERT INTO  tweets (category, content) VALUES ($1, $2)`, [category, content])
 }
 
-const tweetOut = () => {
-
-}
-
 const deleteTweet = (id) => {
-  database.one(`DELETE FROM tweets
+  database.any(`DELETE FROM tweets
 WHERE id = ${id}`)
 }
 

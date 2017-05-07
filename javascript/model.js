@@ -5,14 +5,14 @@ const config = require('../config.js')
 const T = new Twit(config)
 const database = require('../database/database.js')
 
-function getAll() {
-	database.getAllTweets().then(data => {
-		for(var i = 0; i < data.length; i++) {
-			allTweets.push(data[i].tweetx)
-		}
-		database.deleteDuplicates()
-	})
-}
+// function getAll() {
+// 	database.getAllTweets().then(data => {
+// 		for(var i = 0; i < data.length; i++) {
+// 			allTweets.push(data[i].tweetx)
+// 		}
+// 		database.deleteDuplicates()
+// 	})
+// }
 
 function getOne() {
 	getAll()
@@ -33,7 +33,6 @@ T.get('search/tweets', params, getTweets)
 function getTweets(err, data, response) {
 	database.deleteDuplicates()
 	var tweets = data.statuses
-	console.log(tweets);
 	for(var i = 0; i < tweets.length; i++) {
 		const content = tweets[i].text
 		console.log(content);
@@ -42,7 +41,7 @@ function getTweets(err, data, response) {
 }
 
 //	TWEET OUT ONE RANDOM TWEET FROM DB
-setInterval (tweetOut, 1000*60*20)
+setInterval (tweetOut, 1000*60*30)
 
 function tweetOut() {
 	const allTweets = [];
@@ -60,7 +59,7 @@ function tweetOut() {
 
 		T.post('statuses/update', tweet, tweeted)
 
-		function tweeted(err, data, respoonse) {
+		function tweeted(err, data, response) {
 			if(err) {
 				console.log('Something went wrong!', err)
 			} else {
@@ -68,6 +67,22 @@ function tweetOut() {
 			}
 		}
 	})
+}
+
+const manualTweet = (content) => {
+	let tweet = {
+		status: content
+	}
+	// let tweet = content
+	T.post('statuses/update', tweet, tweeted)
+
+	function tweeted(err, data, response) {
+		if(err) {
+			console.log('Something went wrong!', err)
+		} else {
+			console.log('It worked!')
+		}
+	}
 }
 
 //ADD TWEETS TO DATABASE AS TWEETED
@@ -84,9 +99,7 @@ function addToDb(event) {
 }
 
 function editContent(content, getTweetByContent) {
-	console.log('inside edit content fucnction');
 	// getTweetByContent(content)
 }
 
-const test = editContent('I do love her work because my first love')
-console.log(test);
+module.exports = {manualTweet}

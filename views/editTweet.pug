@@ -14,8 +14,6 @@ block content
               li
                 input.tweet-content(type='text' name='content' value=tweet.content)
               li
-                input.tweet-category(type='text' value=`${tweet.category}`)
-              .buttons
-                button(type='submit' method='post' value='submit') Submit
-      
+                input.tweet-category(type='text' name='category' value=tweet.category)
+              button(type='submit') Submit
     

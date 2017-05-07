@@ -13,7 +13,7 @@ block content
             li.tweet-content(type='text' method='post' value=`${tweet.content}`)= tweet.content
             li.tweet-category(type='text' method='post' value=`${tweet.category}`)= tweet.category
             .buttons
-              form(action=`/tweetOut/${tweet.id}`, method='post')
+              form(action=`/manualTweet/${tweet.id}`, method='post')
                 button(type='submit') Tweet
               form(action=`/editTweet/${tweet.id}`, method='get')
                 button(type='submit') Edit

@@ -1,20 +1,18 @@
 const express = require('express')
 const app = express()
-const pgp = require('pg-promise')
+const pgp = require('pg-promise')()
 const pug = require('pug');
 const path = require('path')
 var bodyParser = require('body-parser');
 const database = require('./database/database.js')
 require('./app.js')
-require('./javascript/model.js')
+const model = require('./javascript/model.js')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'pug')
-// app.set('views', path.join(__dirname, 'views'));
-
 
 app.get('/', (request, response) => {
   return database.getAllTweets()
@@ -37,37 +35,32 @@ app.post('/deleteTweet/:id', (request, response) => {
 })
 
 app.post('/updateTweet/:id', (request, response) => {
-
   let id = request.params.id
-  let content = request.params.content
-  let category = request.params.category
-
+  let content = request.body.content
+  let category = request.body.category
   database.updateContent(id, content)
   database.updateCategory(id, category)
-  response.redirect('/')
+  setTimeout( () => {
+    response.redirect('/')
+  }, 1000)
 
+})
+
+app.post('/manualTweet/:id', (request, response) => {
+  database.getTweetById(request.params.id)
+  .then( (tweet) => {
+    let content = tweet.content
+    console.log('content', content)
+    model.manualTweet(content)
+  })
+  .then( () => {
+    response.redirect('/')
   })
 
+  // let content = request.body.content
+  // console.log('manual tweet content: ', content);
 
-// app.post('/updateCategory/:id', (request, response) => {
-//   database.updateContent()
-//   .then( () =>
-//     response.redirect('/'))
-// })
-
-// app.post('/tweet/:id', (request, response) => {
-//   console.log('into tweet function')
-//   .then( () =>
-//     response.alert('Tweet posted!');
-//   )
-// })
-
-// app.post('/deleteTweet/:id', (request, response) => {
-//   database.deleteTweet()
-//   .then( () =>
-//     response.alert('Tweet deleted!');
-//   )
-// })
+})
 
 app.listen(4000)
 console.log('Listening on Port 4000')
