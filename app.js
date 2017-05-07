@@ -37,6 +37,7 @@ app.post('/deleteTweet/:id', (request, response) => {
 app.post('/updateTweet/:id', (request, response) => {
   let id = request.params.id
   let content = request.body.content
+  console.log('content:', content);
   let category = request.body.category
   database.updateContent(id, content)
   database.updateCategory(id, category)
