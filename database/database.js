@@ -18,19 +18,15 @@ const getByContent = (content) => {
 }
 
 const updateContent = (id, content) => {
-  return database.one(`UPDATE tweets SET content = ${content} WHERE id = ${id}`)
+  database.one(`UPDATE tweets SET content = '${content}' WHERE id = ${id}`)
 }
 
 const updateCategory = (id, category) => {
-  return database.one(`UPDATE tweets SET content = ${category} WHERE id = ${id}`)
+  return database.one(`UPDATE tweets SET category = '${category}' WHERE id = ${id}`)
 }
 
 const addTweet = (category, content) => {
   database.any(`INSERT INTO  tweets (category, content) VALUES ($1, $2)`, [category, content])
-}
-
-const tweetOut = () => {
-
 }
 
 const deleteTweet = (id) => {
