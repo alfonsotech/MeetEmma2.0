@@ -1,8 +1,13 @@
+@font-face {
+	font-family: 'uglyQua';
+	src: url(../uglyQua/uglyQua.ttf);
+}
 body {
   /*color: rgba(0,0,0, .7);*/
   font-family: sans-serif;
 }
 #logo {
+  /*font-family: 'uglyQua';*/
   text-align: center;
 }
 h1 {
