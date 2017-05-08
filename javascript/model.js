@@ -5,15 +5,6 @@ const config = require('../config.js')
 const T = new Twit(config)
 const database = require('../database/database.js')
 
-// function getAll() {
-// 	database.getAllTweets().then(data => {
-// 		for(var i = 0; i < data.length; i++) {
-// 			allTweets.push(data[i].tweetx)
-// 		}
-// 		database.deleteDuplicates()
-// 	})
-// }
-
 function getOne() {
 	getAll()
 	const arrayLength = allTweets.length
@@ -21,7 +12,7 @@ function getOne() {
 	return allTweets[index]
 }
 
-//GET OLD TWEETS IN BATCHES FROM TWITTER
+//Get last 50 tweets in timeline
 const params = {
 	screen_name:'tPhilosophia',
 	q: 'tPhilosophia',
@@ -35,12 +26,12 @@ function getTweets(err, data, response) {
 	var tweets = data.statuses
 	for(var i = 0; i < tweets.length; i++) {
 		const content = tweets[i].text
-		console.log(content);
+		console.log(content)//console.log here is intentionally left in!
 		database.addTweet('category', content)
 	}
 }
 
-//	TWEET OUT ONE RANDOM TWEET FROM DB
+//	Tweet out one random tweet from database on a timed interval
 setInterval (tweetOut, 1000*60*30)
 
 function tweetOut() {
@@ -69,11 +60,12 @@ function tweetOut() {
 	})
 }
 
+//Tweet out a specific tweet from UI
 const manualTweet = (content) => {
 	let tweet = {
 		status: content
 	}
-	// let tweet = content
+
 	T.post('statuses/update', tweet, tweeted)
 
 	function tweeted(err, data, response) {
@@ -85,7 +77,7 @@ const manualTweet = (content) => {
 	}
 }
 
-//ADD TWEETS TO DATABASE AS TWEETED
+//Add new tweets to database as they are tweeted out
 const stream = T.stream('user')
 stream.on('tweet', addToDb)
 
@@ -93,13 +85,9 @@ function addToDb(event) {
 	if(event.user.screen_name === 'tPhilosophia') {
 		const message = event.text
 		database.addTweet(message)
-		console.log('tweet added to database: ', message)
+		console.log('Tweet added to database: ', message)
 	}
 	database.deleteDuplicates()
-}
-
-function editContent(content, getTweetByContent) {
-	// getTweetByContent(content)
 }
 
 module.exports = {manualTweet}
