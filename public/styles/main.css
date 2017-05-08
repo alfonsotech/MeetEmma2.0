@@ -1,8 +1,14 @@
+@font-face {
+	font-family: 'uglyQua';
+	src: url(../uglyQua/uglyQua.ttf);
+}
 body {
   /*color: rgba(0,0,0, .7);*/
   font-family: sans-serif;
+	/*background-image: url('/cameron-kirby-222335.jpg');*/
 }
 #logo {
+  /*font-family: 'uglyQua';*/
   text-align: center;
 }
 h1 {
@@ -35,9 +41,14 @@ button:hover {
   padding: 20px 0px;
   background-color: #EAF5FD;
 }
+.main {
+	/*background-image: url('/cameron-kirby-222335.jpg');*/
+}
 .dashboard {
+	background-image: url('/ben-neale-244395.jpg');
+	background-blend-mode: screen;
   padding: 40px;
-  background-color: #EAF5FD;
+  background-color: rgba(234, 245, 253, 1);
 }
 .tweet {
   display: flex;
