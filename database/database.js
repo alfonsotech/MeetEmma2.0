@@ -30,20 +30,13 @@ const addTweet = (category, content) => {
 }
 
 const deleteTweet = (id) => {
-  database.any(`DELETE FROM tweets
-WHERE id = ${id}`)
+  database.any(`DELETE FROM tweets WHERE id = ${id}`)
 }
 
 const deleteDuplicates = () => {
   database.any(`DELETE FROM tweets
-WHERE id IN (SELECT id
-              FROM (SELECT id,
-                             ROW_NUMBER() OVER (partition BY content, category ORDER BY id) AS rnum
-                     FROM tweets) t
-              WHERE t.rnum > 1);`)
+WHERE id IN (SELECT id FROM (SELECT id, ROW_NUMBER() OVER (partition BY content, category ORDER BY id) AS rnum FROM tweets) t WHERE t.rnum > 1);`)
 }
-
-//TODO: function to select a tweet by id or content and alter its category
 
 module.exports = {
   getAllTweets,
