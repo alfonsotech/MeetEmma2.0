@@ -11,7 +11,6 @@ block content
           ul.tweet
             input#tweet-id(type='hidden', value=tweet.id)
             li.tweet-content(type='text' method='post' value=`${tweet.content}`)= tweet.content
-            //- li.tweet-category(type='text' method='post' value=`${tweet.category}`)= tweet.category
             .buttons
               form(action=`/manualTweet/${tweet.id}`, method='post')
                 button(type='submit') Tweet
@@ -19,5 +18,3 @@ block content
                 button(type='submit') Edit
               form(action=`/deleteTweet/${tweet.id}`, method='post')
                 button(type='submit') Delete
-      
-    
