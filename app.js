@@ -52,8 +52,9 @@ app.post('/manualTweet/:id', (request, response) => {
     response.redirect('/')
   })
 })
-
-app.listen(4000)
-console.log('Listening on Port 4000')
+var PORT = process.env.PORT || 4000;
+app.listen(PORT, function() {
+  console.log("App listening on PORT: " + PORT);
+});
 
 module.exports = app
