@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "build": "babel src -d lib",
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "test": "eslint"
   },
   "repository": {
